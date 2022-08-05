@@ -1,0 +1,45 @@
+/* 
+font-family: 'Anton', sans-serif; 
+*/
+
+.lista-que-tenemos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-que-tenemos li {
+    margin: 4px 0;
+}
+
+.lista-que-tenemos li a {
+    background-color: #fff;
+    font-family: 'Anton', cursive;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    transition: all .2s ease-in-out;
+    display: block;
+}
+
+.lista-que-tenemos li a:hover {
+    color: #212529;
+    background-color: #dadada;
+}
+
+.lista-que-tenemos li a img {
+    width: 120px;
+    height: 120px;
+    filter: grayscale();
+    transition: all .2s ease-in-out;
+    margin-right: 1rem;
+    opacity: o.7;
+}
+
+.lista-que-tenemos li a:hover img {
+    filter: none;
+    margin-right: 1.4rem;
+    opacity: 1;
+}
+
+
