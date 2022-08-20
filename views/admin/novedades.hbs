@@ -16,6 +16,14 @@
             <a href="/admin/novedades/agregar" class="btn btn-success"><i class="fas fa-plus"></i>Nuevo</a>
         </div>
     </div>
+    <div class="col-3 text-right">
+        <form class="form-inline" action="/admin/novedades" method="get">
+            <input class="form-control" type="search" placeholder="Buscar" aria-label="search" name="q" {{#if q}}value="{{q}}" {{/if}}>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
     <div class="row">
         <div class="col">
             <table class="table">
@@ -33,13 +41,20 @@
                         <th scope="row">{{id}}</th>
                         <td>{{titulo}}</td>
                         <td class="text-right">
-                            <a href="/admin/novedades/modificar/{{id}}" class="btn btn-secondary"><i class="fas fa-pencil-alt">Editar</i></a>
-                            <a href="/admin/novedades/eliminar/{{id}}" class="btn btn-secondary"><i class="fas fa-trash"></i>Borrar</a>
+                            <a href="/admin/novedades/modificar/{{id}}" class="btn btn-secondary"><i
+                                    class="fas fa-pencil-alt">Editar</i></a>
+                            <a href="/admin/novedades/eliminar/{{id}}" class="btn btn-secondary"><i
+                                    class="fas fa-trash"></i>Borrar</a>
                         </td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
+            {{#if is_search}}
+            {{unless novedades.Lenght}}
+            No se encontraron resultados para "<b>{{q}}</b>"
+            {{/unless}}
+            {{/if}}
         </div>
 
     </div>

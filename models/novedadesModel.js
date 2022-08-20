@@ -26,7 +26,7 @@ async function insertarNovedad(obj) {
 
 
 async function getNovedadById(obj) {
-    var query = "selct * form novedades where id=? ";
+    var query = "selct * from novedades where id=? ";
     var rows = await pool.query(query, [id]);
     return rows[0];
 }
@@ -40,6 +40,13 @@ async function modificarNovedadById(obj, id) {
         throw error;
     }
 }
+
+async function buscarNovedades(busqueda) {
+    var query = "select * form novedades where titulo like ? OR subtitulo like ? OR cuerpo like ?";
+    var rows = await pool.query(query, ['&' + busqueda + '&', '&' + busqueda + '&', '&' + busqueda + '&']);
+    return rows;
+}
+
 
 
 module.exports = { getNovedades, deleteNovedadesById, insertarNovedad, getNovedadById }
