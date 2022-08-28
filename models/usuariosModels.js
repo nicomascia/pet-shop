@@ -12,4 +12,4 @@ async function getUserAndPassword(user, password) {
     }
 }
 
-module.export = {getUserAndPassword}
+module.exports = { getUserAndPassword }

@@ -9,7 +9,7 @@ const destroy = util.promisify(cloudinary.uploader.destroy);
 
 router.get('/', async function (req, res, next) {
 
-   // var novedades = await novedadesModel.getNovedades();//
+   var novedades = await novedadesModel.getNovedades();//
 
 var novedades
 
@@ -56,12 +56,12 @@ router.get('/eliminar/:id', async (req, res, next) => {
         await (destroy(novedad.img_id));
     }
 
-    await novedadesModels.deleteNovedadesById(id);
+    await novedadesModel.deleteNovedadesById(id);
     res.redirect('/admin/novedades')
 });
 
 router.get('/agregar', (req, res, next) => {
-    req.render('admin/agregar', {
+    res.render('admin/agregar', {
         layout: 'admin/layout'
     })
 });
@@ -79,7 +79,7 @@ router.post('/agregar', async (req, res, next) => {
 
 
         if (req.body.titulo != "" && req.body.subtitulo != "" && req.body.cuerpo != "") {
-            await novedadesModel.insertNovedad({
+            await novedadesModel.insertarNovedad({
                 ...req.body,
                 img_id
             });
@@ -103,7 +103,7 @@ router.post('/agregar', async (req, res, next) => {
 
 router.get('/modificar/:id', async (req, res, next) => {
     var id = req.params.id;
-    var novedad = await novedadesModel.getNovedadesById(id);
+    var novedad = await novedadesModel.getNovedadById(id);
     res.render('admin/modificar', {
         layout: 'admin/layout',
         novedad
@@ -136,7 +136,7 @@ router.post('/modificar', async (req, res, next) => {
             }
 
         console.log(obj)
-        await novedadesModel.modificarNovedadesById(obj, req.body.id);
+        await novedadesModel.modificarNovedadById(obj, req.body.id);
         res.redirect('/admin/novedades');
     } catch (error) {
         console.log(error)

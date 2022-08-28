@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 require('dotenv').config();
 var session = require('express-session');
-var fileupload = require('express-fileupload');
+var fileUpload = require('express-fileupload');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -44,7 +44,7 @@ secured = async (req, res, next) => {
   }
 }
 
-app.use(fileupload({
+app.use(fileUpload({
   useTempFiles: true,
   tempFileDir: '/tmp/'
 }));
